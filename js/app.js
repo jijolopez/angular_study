@@ -1,10 +1,27 @@
-var app = angular.module("app", ['ui.router', 'login']);
+var app = angular.module("app", ['ui.router', 'header', 'login']);
 
 app.config(function ($stateProvider, $urlRouterProvider) {
 
-    $urlRouterProvider.when("", "/home");
+    $urlRouterProvider.when("", "/index");
 
     $stateProvider
+
+    .state("landing", {
+        url: "/index",
+        views:{
+            "header":{
+                templateUrl: "partials/header.html",
+                controller:"headerCtrl"
+            },
+            "content":{
+                templateUrl: "partials/landing.html",
+                // controller: "homeCtrl"
+            },
+            "footer":{
+                templateUrl: "partials/footer.html",
+            }
+        }
+    })
 
     .state("login", {
         url: "/login",
@@ -15,19 +32,20 @@ app.config(function ($stateProvider, $urlRouterProvider) {
             }
         }
     })
-    
-    .state("landing", {
+
+    .state("home", {
         url: "/home",
         views:{
             "header":{
-                templateUrl: "modules/common/header.html",
+                templateUrl: "partials/header.html",
+                controller:"headerCtrl"
             },
             "content":{
-                templateUrl: "partials/landing.html",
-                controller: "homeCtrl"
+                templateUrl: "partials/home.html",
+                // controller: "homeCtrl"
             },
             "footer":{
-                templateUrl: "modules/common/footer.html",
+                templateUrl: "partials/footer.html",
             }
         }
     });
