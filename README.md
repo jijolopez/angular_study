@@ -1,2 +1,2 @@
 # angular_study
-Angular Project
+Angular Project for study
